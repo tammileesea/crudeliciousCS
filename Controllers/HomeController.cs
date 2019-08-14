@@ -64,19 +64,21 @@ namespace CRUDelicious.Controllers
             return View(oneDish);
         }
 
-        [HttpPost("update")]
-        public IActionResult updateDish(Dish editedDish){
-            Dish gotDish = dbContext.Dishes.SingleOrDefault(d => d.iddishes == editedDish.iddishes);
-            System.Console.WriteLine("************************");
-            System.Console.WriteLine("HELP");
-            gotDish.Name = editedDish.Name;
-            gotDish.Chef = editedDish.Chef;
-            gotDish.Tastiness = editedDish.Tastiness;
-            gotDish.Calories = editedDish.Calories;
-            gotDish.Description = editedDish.Description;
-            gotDish.UpdatedAt = DateTime.Now;
-            dbContext.SaveChanges();
-            return RedirectToAction("Index");
+        [HttpPost("update/{id}")]
+        public IActionResult updateDish(Dish editedDish, int id){
+            Dish gotDish = dbContext.Dishes.SingleOrDefault(d => d.iddishes == id);
+            if (ModelState.IsValid){
+                gotDish.Name = editedDish.Name;
+                gotDish.Chef = editedDish.Chef;
+                gotDish.Tastiness = editedDish.Tastiness;
+                gotDish.Calories = editedDish.Calories;
+                gotDish.Description = editedDish.Description;
+                gotDish.UpdatedAt = DateTime.Now;
+                dbContext.SaveChanges();
+                return RedirectToAction("Index");
+            } else {
+                return View("EditDish", gotDish);
+            }
         }
     }
 }
