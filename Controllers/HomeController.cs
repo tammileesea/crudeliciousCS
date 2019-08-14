@@ -60,7 +60,6 @@ namespace CRUDelicious.Controllers
         [HttpGet("edit/{dishID}")]
         public IActionResult EditDish(int dishID){
             Dish oneDish = dbContext.Dishes.SingleOrDefault(d => d.iddishes == dishID);
-            // ViewBag.thisDish = oneDish;
             return View(oneDish);
         }
 
@@ -75,7 +74,7 @@ namespace CRUDelicious.Controllers
                 gotDish.Description = editedDish.Description;
                 gotDish.UpdatedAt = DateTime.Now;
                 dbContext.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("DishInfo", new {dishID = id});
             } else {
                 return View("EditDish", gotDish);
             }
