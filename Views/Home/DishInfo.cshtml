@@ -1,0 +1,17 @@
+@model Dish
+
+<div>
+    <a href="/">Home</a>
+    <h1>@Model.Name</h1>
+    <h4>@Model.Chef</h4>
+    <hr>
+    <p>@Model.Description</p>
+    <p>Calories: @Model.Calories</p>
+    <p>Tastiness: @Model.Tastiness</p>
+
+    <form action="remove/@Model.iddishes" method="post">
+        <button>Delete</button>
+        <!-- <input type="hidden" value="@Model.iddishes"> -->
+    </form>
+    <a href="/edit/@Model.iddishes" class="btn btn primary">Edit</a>
+</div>

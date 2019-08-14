@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "CRUDelicious B*itch!!!";
+    
+}
+@model Dish
+
+<div>
+    <h1>Welcome to CRUDelicious!!!!!!!!!!!</h1>
+    <div>
+        <h3>Check out some recent dishes, if u want!</h3>
+        <a href="/new">Add a Dish</a>
+    </div>
+    <hr>
+    <div>
+        @foreach(var dish in ViewBag.Dishes){
+            <p><a href="@dish.iddishes">@dish.Name</a> by @dish.Chef</p>
+        }
+    </div>
+</div>

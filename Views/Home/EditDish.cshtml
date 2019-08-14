@@ -1,0 +1,38 @@
+@model Dish
+
+<div>
+    <a href="/">Home</a>
+    <h1>Edit @Model.Name</h1>
+    <form asp-action="updateDish" asp-controller="Home" method="post">
+        <span asp-validation-for="Chef"></span>
+        <label asp-for="Chef"></label>
+        <input asp-for="Chef" ><br>
+
+        <span asp-validation-for="Name"></span>
+        <label asp-for="Name"></label>
+        <input asp-for="Name"><br>
+
+        <span asp-validation-for="Calories"></span>
+        <label asp-for="Calories"></label>
+        <input asp-for="Calories"><br>
+
+        <span asp-validation-for="Tastiness"></span>
+        <label asp-for="Tastiness"></label>
+        <select asp-for="Tastiness">
+            <option selected hidden disabled>Select number</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select><br>
+
+        <span asp-validation-for="Description"></span>
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description" cols="15" rows="3"></textarea><br>
+
+        <input type="hidden" asp-for="iddishes">
+        <button>Edit Dish</button>
+    </form>
+    <a href="/"><button>Cancel</button></a>
+</div>
